@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('device_id')->references('id')->on('devices');
+            $table->string('name'); // wajib isi nama sensor i.e Suhu, Kelembapan Tanah, Lux
+            $table->string('type'); // wajib isi tipe sensor i.e DHT22, Resistive Soil Sensor, BH1750
             $table->timestamps();
         });
     }

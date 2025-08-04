@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('plant_id')->references('id')->on('plants');
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('mac_address')->nullable();
+            $table->string('last_active_at')->useCurrent();
             $table->timestamps();
         });
     }

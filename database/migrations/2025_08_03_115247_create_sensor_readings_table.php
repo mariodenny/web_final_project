@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('sensor_readings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('device_id')->references('id')->on('devices');
+            $table->foreignId('sensor_id')->references('id')->on('sensors');
+            $table->json('sensor_values')->nullable();
             $table->timestamps();
         });
     }
